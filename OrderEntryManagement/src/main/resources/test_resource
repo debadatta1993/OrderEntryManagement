@@ -1,0 +1,36 @@
+create table users(Id int NOT NULL auto_increment,username varchar(20),password varchar(20),Phone VARCHAR(10),Address VARCHAR(200),PRIMARY KEY (Id));
+
+insert into users(username,password,phone,address) values ("debu@gmail.com","abc@123","9438100846","bangalore");
+insert into users(username,password,phone,address) values ("dipu@gmail.com","def@123","9438100748","hyd");
+insert into users(username,password,phone,address) values ("bikash@gmail.com","fxj@123","9438875846","chenni");
+insert into users(username,password,phone,address) values ("rashmi@gmail.com","cbv@123","9938100846","odisha");
+insert into users(username,password,phone,address) values ("saroj@gmail.com","bdf@123","9238167846","mumbai");
+
+create table products(productID	int,productName varchar(20),price double,productDetails varchar(20),available boolean,primary key (productID));
+
+insert into products(productID,productName,price,productDetails,available) values (101,"sugar",50.0,"madhur",true);
+insert into products(productID,productName,price,productDetails,available) values (102,"oil",150.0,"dhara",true);
+insert into products(productID,productName,price,productDetails,available) values (103,"salt",20.0,"tata",true);
+insert into products(productID,productName,price,productDetails,available) values (104,"soap",40.0,"lux",true);
+insert into products(productID,productName,price,productDetails,available) values (105,"facewash",110.0,"himalaya",true);
+insert into products(productID,productName,price,productDetails,available) values (106,"biscuit",20.0,"monaco",true);
+insert into products(productID,productName,price,productDetails,available) values (107,"masala",45.0,"everest",true);
+insert into products(productID,productName,price,productDetails,available) values (108,"curd",28.0,"tirumala",true);
+
+create table orders(orderId	int not null,orderDate date,price double,userId int not null,primary key(orderId));
+
+insert into orders(orderId,orderDate,price,userId) values (143430,'2020-01-23',500.0,1);
+insert into orders(orderId,orderDate,price,userId) values (143436,'2020-02-24',1500.0,1);
+insert into orders(orderId,orderDate,price,userId) values (143437,'2020-03-25',2500.0,1);
+insert into orders(orderId,orderDate,price,userId) values (143438,'2020-02-26',1200.0,2);
+insert into orders(orderId,orderDate,price,userId) values (143439,'2020-04-12',600.0,2);
+insert into orders(orderId,orderDate,price,userId) values (143440,'2020-05-20',300.0,2);
+
+create table order_product(orderId	int not null,productName varchar(20),quantity int,FOREIGN KEY (productName) REFERENCES products(productName));
+
+insert into order_product(id,orderId,quantity,productName) values (2,143438,2,'sugar');
+insert into order_product(id,orderId,quantity,productName) values (3,143438,1,'oil');
+insert into order_product(id,orderId,quantity,productName) values (4,143438,3,'salt');
+insert into order_product(id,orderId,quantity,productName) values (5,143440,5,'soap');
+insert into order_product(id,orderId,quantity,productName) values (6,143440,2,'masala');
+insert into order_product(id,orderId,quantity,productName) values (7,143440,1,'curd');
